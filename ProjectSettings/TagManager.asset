@@ -3,15 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ObstacleRed
+  - ObstacleBlue
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - red
   - Water
   - UI
-  - 
+  - blue
   - 
   - 
   - 

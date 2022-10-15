@@ -11,20 +11,26 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool Grounded;
     public bool playerOne;
+    public bool red;
     
     float movementDirection;
+    private GameObject cursor;
+    private bool move;
 
-    // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         ridigbody2D = GetComponent<Rigidbody2D>();
+        cursor = GameObject.FindWithTag("cursor");
     }
 
-    // Update is called once per frame
     void Update()
     {
         movementDirection=0;
+
+        if(Input.GetKeyDown(KeyCode.Space)){
+            cursorActivation(); 
+        }
 
         if(playerOne){
             Horizontal = Input.GetAxisRaw("Horizontal");
@@ -81,8 +87,20 @@ public class Player : MonoBehaviour
     }
 
     private void FixedUpdate(){
-        
         ridigbody2D.velocity = new Vector2(movementDirection*Speed, ridigbody2D.velocity.y);
-
     } 
+
+    private void cursorActivation(){
+        if(cursor.GetComponent<Renderer>().enabled == false){
+            cursor.GetComponent<Renderer>().enabled = true;
+            cursor.transform.position = new Vector2(transform.position.x, transform.position.y);
+            move = false;
+        }
+        else{
+            cursor.GetComponent<Renderer>().enabled = false;
+            move = true;
+        }
+        
+        Debug.Log(!(gameObject.GetComponent<Renderer>().enabled));
+    }
 }

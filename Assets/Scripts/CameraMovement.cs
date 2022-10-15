@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public float followSpeed;
-    private Transform player1, player2;
+    public Transform player1, player2;
     private Vector2 pos, vel;
     
     void Update()
@@ -15,6 +15,6 @@ public class CameraMovement : MonoBehaviour
         */
         pos = (player1.position + player2.position) * 0.5f;
         transform.position = Vector2.SmoothDamp(transform.position, pos, ref vel, followSpeed);
-        transform.position = new Vector3(transform.position.x, transform.position.y -10);
+        transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
 }
