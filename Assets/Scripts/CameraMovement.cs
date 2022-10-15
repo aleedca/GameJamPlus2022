@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public float followSpeed = 4f;
-    public float yPosition = 2f;
-    private Transform player;
+    public float yOffset = -1f;
+    private Transform player1, player2;
 
     void Start()
     {
@@ -15,8 +15,7 @@ public class CameraMovement : MonoBehaviour
 
     void Update()
     {
-        Vector2 targetPos = player.position;
-        Vector2 smoothPos = Vector2.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
-        transform.position = new Vector3(smoothPos.x, smoothPos.y + yPosition, -15f);
+        Vector3 newPosPlayer1 = new Vector3(player1.position.x, player1.position.y + yOffset, -10f); //player x y position
+        transform.position = Vector3.Slerp(tranform.position, newPosPlayer1, followSpeed * Time.deltatime);
     }
 }
