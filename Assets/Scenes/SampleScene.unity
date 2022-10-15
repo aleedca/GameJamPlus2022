@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpForce: 2
-  Speed: 5
+  Speed: 2
   playerOne: 0
   red: 0
 --- !u!212 &311764810
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ba4ea1ad5136e4d9196ac71adde664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 15
+  followSpeed: 100
   player1: {fileID: 636745425}
   player2: {fileID: 311764811}
 --- !u!1 &636745423
@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpForce: 2
-  Speed: 5
+  Speed: 2
   playerOne: 1
   red: 0
 --- !u!61 &636745427
