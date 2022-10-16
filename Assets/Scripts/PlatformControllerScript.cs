@@ -19,6 +19,9 @@ public class PlatformControllerScript : MonoBehaviour
     [SerializeField] GameObject esferaRoja;
     [SerializeField] GameObject esferaAzul;
 
+    public Animator animatorRed;
+    public Animator animatorBlue;
+
     private bool onPlatform;
 
     // Start is called before the first frame update
@@ -30,6 +33,7 @@ public class PlatformControllerScript : MonoBehaviour
         buttonPressed2 = plataforma2.GetComponent<ButtonPressed>();
         colorPlayer1 = player1.GetComponent<Player>();
         colorPlayer2 = player2.GetComponent<Player>();
+        //animator = player1.GetComponent<Animator>();
         onPlatform = true;
     }
 
@@ -38,8 +42,10 @@ public class PlatformControllerScript : MonoBehaviour
     {
         if(onPlatform){
             if(buttonPressed1.pressed && buttonPressed2.pressed){
-                Debug.Log("pressing");
                 onPlatform = false;
+                animatorRed.SetBool("fadeoutred", true);
+                animatorBlue.SetBool("fadeout", true);
+                Debug.Log("pressing");
                 if(Random.Range(0, 10) % 2 == 0){
                     colorPlayer1.red = true;
                     colorPlayer2.blue = true;
@@ -48,18 +54,9 @@ public class PlatformControllerScript : MonoBehaviour
                     colorPlayer1.blue = true;
                     colorPlayer2.red = true;
                 }
-                fadeOut();
+                
             }
         }
     }
-
-    private void fadeOut(){
-        float opacity = 1.0f;
-        // while(opacity != 0.0f){
-        //     esferaRoja.GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,opacity);
-        //     opacity -= 0.01f;
-        // }
-    }
-
 
 }

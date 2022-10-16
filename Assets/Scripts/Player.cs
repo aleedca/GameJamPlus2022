@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     private GameObject cursor;
     private bool move;
 
+    public float posXCP;
+    public float posYCP;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -85,6 +88,11 @@ public class Player : MonoBehaviour
             {
                 Jump();
             }
+        }
+
+        //checkpoint
+        if(Input.GetKeyDown(KeyCode.R)){
+            transform.position = new Vector2(posXCP, posYCP);
         }
 
     }

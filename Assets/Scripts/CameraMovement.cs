@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
-{
-    public float followSpeed;
-    public Transform player1, player2;
-    private Vector2 pos, vel;
+{   
+    public List<Transform> targets;
+    public Vector3 offset;
     
-    void Update()
-    {
-        /*Vector3 newPosPlayer1 = new Vector3(player1.position.x, player1.position.y + yOffset, -10f); //player x y position
-        transform.position = Vector3.Slerp(transform.position, newPosPlayer1, followSpeed * Time.deltaTime);
-        */
-        pos = (player1.position + player2.position) * 0.5f;
-        transform.position = Vector2.SmoothDamp(transform.position, pos, ref vel, followSpeed);
-        transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+    private void LateUpdate() {
+        if(targets.Count == 0) return;
+
+        Vector3 centerPoint = GetCenterPoint();
+        Vector3 newPosition = centerPoint + offset;
+        transform.position = newPosition;
+    }
+
+    Vector3 GetCenterPoint(){
+        if(targets.Count == 1) return targets[0].position;
+
+        var bounds = new Bounds(targets[0].position, Vector3.zero);
+        for (int i = 0; i < targets.Count; i++){
+            bounds.Encapsulate(targets[i].position);
+        }
+
+        return bounds.center;
     }
 }
