@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ObstacleRed
   - ObstacleBlue
+  - boton
+  - suelo
   layers:
   - Default
   - TransparentFX

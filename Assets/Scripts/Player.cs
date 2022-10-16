@@ -66,6 +66,8 @@ public class Player : MonoBehaviour
         
         //animator.SetBool("isRunning", Horizontal != 0.0f);
 
+        //animator.SetBool("isJumping", !Grounded);
+
         float rayDistance = 1.0f;
         RaycastHit2D raycast = Physics2D.Raycast(transform.position, Vector2.down, rayDistance);
         Debug.Log(raycast.collider);
@@ -76,8 +78,6 @@ public class Player : MonoBehaviour
             //Debug.Log(Grounded);
         }
         else Grounded = false;
-
-        //animator.SetBool("isJumping", !Grounded);
 
         // Salto
         if(playerOne){
@@ -99,6 +99,16 @@ public class Player : MonoBehaviour
         }
 
     }
+
+    /// <summary>
+    /// Sent when an incoming collider makes contact with this object's
+    /// collider (2D physics only).
+    /// </summary>
+    /// <param name="other">The Collision2D data associated with this collision.</param>
+/*
+(1 << 3) | (1 << 5)
+
+*/
 
     private void Jump(){
         ridigbody2D.AddForce(Vector2.up * JumpForce);
