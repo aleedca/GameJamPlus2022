@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     public bool red, blue;
     
     public float movementDirection = 0.0f;
-    private GameObject cursor;
     private bool move;
 
     public float posXCP;
@@ -27,16 +26,11 @@ public class Player : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         ridigbody2D = GetComponent<Rigidbody2D>();
-        cursor = GameObject.FindWithTag("cursor");
     }
 
     void Update()
     {
         movementDirection=0;
-
-        if(Input.GetKeyDown(KeyCode.Space)){
-            cursorActivation(); 
-        }
 
         if(playerOne){
             Horizontal = Input.GetAxisRaw("Horizontal");
@@ -68,7 +62,7 @@ public class Player : MonoBehaviour
 
         //animator.SetBool("isJumping", !Grounded);
 
-        float rayDistance = 1.0f;
+        float rayDistance = 1.3f;
         RaycastHit2D raycast = Physics2D.Raycast(transform.position, Vector2.down, rayDistance);
         Debug.Log(raycast.collider);
         Debug.DrawRay(transform.position, Vector2.down * rayDistance, Color.red);
@@ -135,17 +129,4 @@ public class Player : MonoBehaviour
         }
     } 
 
-    private void cursorActivation(){
-        if(cursor.GetComponent<Renderer>().enabled == false){
-            cursor.GetComponent<Renderer>().enabled = true;
-            cursor.transform.position = new Vector2(transform.position.x, transform.position.y);
-            move = false;
-        }
-        else{
-            cursor.GetComponent<Renderer>().enabled = false;
-            move = true;
-        }
-        
-        Debug.Log(!(gameObject.GetComponent<Renderer>().enabled));
-    }
 }
