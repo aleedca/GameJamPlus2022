@@ -9,12 +9,17 @@ public class ButtonPressed : MonoBehaviour
     private int speed;
     private int pressAnimated;
     [SerializeField] GameObject buttonSprite; 
+    private bool botonColor;
+    public bool juntos;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
         pressAnimated = 0;
+        botonColor = true;
+        juntos = false;
     }
 
     // Update is called once per frame
@@ -40,8 +45,19 @@ public class ButtonPressed : MonoBehaviour
     /// object (2D physics only).
     /// </summary>
     /// <param name="other">The other Collider2D involved in this collision.</param>
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
+        if(this.gameObject.name == "botonRojo" && botonColor && juntos){
+            GameObject player = other.gameObject;
+            player.layer = 3;
+            botonColor = false;
+
+        }
+        if(this.gameObject.name == "botonAzul" && botonColor && juntos){
+            GameObject player = other.gameObject;
+            player.layer = 6;
+            botonColor = false;
+        }
         if(other.CompareTag("Player")){
             pressed = true;
         }

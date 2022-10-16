@@ -40,24 +40,15 @@ public class PlatformControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(onPlatform){
-            if(buttonPressed1.pressed && buttonPressed2.pressed){
-                onPlatform = false;
-                animatorRed.SetBool("fadeoutred", true);
-                animatorBlue.SetBool("fadeout", true);
-                Debug.Log("pressing");
-                if(Random.Range(0, 10) % 2 == 0){
-                    colorPlayer1.red = true;
-                    colorPlayer2.blue = true;
-                }
-                else{
-                    colorPlayer1.blue = true;
-                    colorPlayer2.red = true;
-                }
-                
-                
-            }
-            
+        if (buttonPressed1.pressed && buttonPressed2.pressed)
+        {
+            buttonPressed1.juntos = true;
+            buttonPressed2.juntos = true;
+            onPlatform = false;
+            animatorRed.SetBool("fadeoutred", true);
+            animatorBlue.SetBool("fadeout", true);
+
+
         }
     }
 

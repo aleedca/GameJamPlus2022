@@ -23,6 +23,7 @@ public class DoorBehavior : MonoBehaviour
     {
         if (cont < cantMovement && buttonPressed.pressed){
             transform.position = new Vector2(transform.position.x, transform.position.y - 1);
+            cont++;
         }
         
     }
