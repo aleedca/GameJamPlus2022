@@ -13,12 +13,15 @@ public class Player : MonoBehaviour
     public bool playerOne;
     public bool red, blue;
     
-    float movementDirection;
+    public float movementDirection = 0.0f;
     private GameObject cursor;
     private bool move;
 
     public float posXCP;
     public float posYCP;
+
+    public bool blocked;
+    public bool leftBlock, rightBlock;
 
     void Start()
     {
@@ -38,24 +41,24 @@ public class Player : MonoBehaviour
         if(playerOne){
             Horizontal = Input.GetAxisRaw("Horizontal");
             if(Input.GetKey(KeyCode.A)){
-                if(Horizontal < 0.0f) spriteRenderer.flipX = true;
+                if(Horizontal < 0.0f) spriteRenderer.flipX = false;
                 movementDirection = -1.0f;
                 
             }
             else if (Input.GetKey(KeyCode.D)){
-                if (Horizontal > 0.0f) spriteRenderer.flipX = false;
+                if (Horizontal > 0.0f) spriteRenderer.flipX = true;
                 movementDirection = 1.0f;
             }
         }
         else{
             Horizontal = Input.GetAxisRaw("Horizontal");
             if(Input.GetKey(KeyCode.LeftArrow)){
-                if(Horizontal < 0.0f) spriteRenderer.flipX = true;
+                if(Horizontal < 0.0f) spriteRenderer.flipX = false;
                 movementDirection = -1.0f;
                 
             }
             else if (Input.GetKey(KeyCode.RightArrow)){
-                if (Horizontal > 0.0f) spriteRenderer.flipX = false;
+                if (Horizontal > 0.0f) spriteRenderer.flipX = true;
                 movementDirection = 1.0f;
             }
         }
@@ -102,7 +105,24 @@ public class Player : MonoBehaviour
     }
 
     private void FixedUpdate(){
-        ridigbody2D.velocity = new Vector2(movementDirection*Speed, ridigbody2D.velocity.y);
+        if(!blocked){
+            ridigbody2D.velocity = new Vector2(movementDirection*Speed, ridigbody2D.velocity.y);
+        }
+        else{
+            if(leftBlock && movementDirection == 1.0f){
+                ridigbody2D.velocity = new Vector2(movementDirection*Speed, ridigbody2D.velocity.y);
+                blocked = false;
+                leftBlock = false;
+            }
+            else if(rightBlock && movementDirection == -1.0f){
+                ridigbody2D.velocity = new Vector2(movementDirection*Speed, ridigbody2D.velocity.y);
+                blocked = false;
+                rightBlock =false;
+            }
+            
+            
+            
+        }
     } 
 
     private void cursorActivation(){
