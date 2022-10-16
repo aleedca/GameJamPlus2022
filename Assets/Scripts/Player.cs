@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool Grounded;
     public bool playerOne;
-    public bool red;
+    public bool red, blue;
     
     float movementDirection;
     private GameObject cursor;
@@ -74,10 +74,17 @@ public class Player : MonoBehaviour
         //animator.SetBool("isJumping", !Grounded);
 
         // Salto
-        if (Input.GetKeyDown(KeyCode.W) && Grounded)
-        {
-            Jump();
-            Debug.Log("jumping");
+        if(playerOne){
+            if (Input.GetKeyDown(KeyCode.W) && Grounded)
+            {
+                Jump();
+            }
+        }
+        else{
+            if (Input.GetKeyDown(KeyCode.UpArrow) && Grounded)
+            {
+                Jump();
+            }
         }
 
     }
