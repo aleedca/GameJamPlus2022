@@ -55,7 +55,9 @@ public class PlatformControllerScript : MonoBehaviour
                     colorPlayer2.red = true;
                 }
                 
+                
             }
+            
         }
     }
 

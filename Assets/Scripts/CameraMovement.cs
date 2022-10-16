@@ -38,7 +38,7 @@ public class CameraMovement : MonoBehaviour
 
         Debug.Log(resta);
 
-        if(resta >= 22)
+        if(resta >= 16)
         {
             horizontalPlayer1.blocked = true;
             horizontalPlayer2.blocked = true;

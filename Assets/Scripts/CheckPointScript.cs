@@ -10,6 +10,7 @@ public class CheckPointScript : MonoBehaviour
 
     private Player script1;
     private Player script2;
+    private Animator animator;
 
 
     // Start is called before the first frame update
@@ -20,6 +21,8 @@ public class CheckPointScript : MonoBehaviour
 
         script1 = player1.GetComponent<Player>();
         script2 = player2.GetComponent<Player>();
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,6 +45,7 @@ public class CheckPointScript : MonoBehaviour
             script1.posYCP = this.transform.position.y;
             script2.posXCP = this.transform.position.x;
             script2.posYCP = this.transform.position.y;
+            animator.SetBool("turnoff", true);
         }
     }
     
