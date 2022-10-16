@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72f0025727d27d45b3cab6f8fc5c26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpForce: 2
+  JumpForce: 150
   Speed: 2
   playerOne: 0
   red: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72f0025727d27d45b3cab6f8fc5c26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpForce: 2
+  JumpForce: 150
   Speed: 2
   playerOne: 1
   red: 0
@@ -694,6 +694,10 @@ PrefabInstance:
     - target: {fileID: 6032481200163490140, guid: 4b5fe02a7c1d936408a6ea3428c13abc, type: 3}
       propertyPath: m_Name
       value: boton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032481200163490144, guid: 4b5fe02a7c1d936408a6ea3428c13abc, type: 3}
+      propertyPath: pressed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6032481200163490145, guid: 4b5fe02a7c1d936408a6ea3428c13abc, type: 3}
       propertyPath: m_RootOrder
@@ -757,17 +761,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: boton
       objectReference: {fileID: 0}
+    - target: {fileID: 6032481200163490144, guid: 4b5fe02a7c1d936408a6ea3428c13abc, type: 3}
+      propertyPath: pressed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6032481200163490145, guid: 4b5fe02a7c1d936408a6ea3428c13abc, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6032481200163490145, guid: 4b5fe02a7c1d936408a6ea3428c13abc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.7929
+      value: 5.07
       objectReference: {fileID: 0}
     - target: {fileID: 6032481200163490145, guid: 4b5fe02a7c1d936408a6ea3428c13abc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7397
+      value: -3.78
       objectReference: {fileID: 0}
     - target: {fileID: 6032481200163490145, guid: 4b5fe02a7c1d936408a6ea3428c13abc, type: 3}
       propertyPath: m_LocalPosition.z

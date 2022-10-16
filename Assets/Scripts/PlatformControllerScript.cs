@@ -30,23 +30,26 @@ public class PlatformControllerScript : MonoBehaviour
         buttonPressed2 = plataforma2.GetComponent<ButtonPressed>();
         colorPlayer1 = player1.GetComponent<Player>();
         colorPlayer2 = player2.GetComponent<Player>();
-        onPlatform = false;
+        onPlatform = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(buttonPressed1.pressed && buttonPressed2.pressed && !onPlatform){
-            onPlatform = true;
-            if(Random.Range(0, 10) % 2 == 0){
-                colorPlayer1.red = true;
-                colorPlayer2.blue = true;
+        if(onPlatform){
+            if(buttonPressed1.pressed && buttonPressed2.pressed){
+                Debug.Log("pressing");
+                onPlatform = false;
+                if(Random.Range(0, 10) % 2 == 0){
+                    colorPlayer1.red = true;
+                    colorPlayer2.blue = true;
+                }
+                else{
+                    colorPlayer1.blue = true;
+                    colorPlayer2.red = true;
+                }
+                fadeOut();
             }
-            else{
-                colorPlayer1.blue = true;
-                colorPlayer2.red = true;
-            }
-            fadeOut();
         }
     }
 
