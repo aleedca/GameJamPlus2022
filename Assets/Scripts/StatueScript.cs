@@ -6,16 +6,23 @@ public class StatueScript : MonoBehaviour
 {
     public GameObject target;
     private Animator animator;
+    private bool final;
     // Start is called before the first frame update
     void Start()
     {
         animator = target.GetComponent<Animator>();
+        final = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(final){
+            if(Input.GetKeyDown(KeyCode.Escape)){
+                Application.Quit();
+                
+            }
+        }
     }
 
     /// <summary>
@@ -26,5 +33,6 @@ public class StatueScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         animator.SetBool("fadeout", true);
+        final = true;
     }
 }
